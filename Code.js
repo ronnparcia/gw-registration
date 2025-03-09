@@ -28,7 +28,11 @@ function addTicketNumber() {
       ticketCell.setValue(ticketNumber);
 
       // Generate card
-      generateCardForRow(i + 1);
+      try {
+        generateCardForRow(i + 1);
+      } catch (error) {
+        Logger.log("Failed to generate card for row " + (i + 1) + ": " + error.message);
+      }
     }
   }
   
