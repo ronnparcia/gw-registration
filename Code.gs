@@ -50,7 +50,7 @@ function addTicketNumber() {
  * Expected header names:
  *   "Account Number", "OR Number", "Last Name", "First Name",
  *   "Middle Name", "ID Number", "College", "Degree Code",
- *   "Alternate Degree Code", "Chosen Package", "Term of Payment"
+ *   "Alt. Deg. Code", "Chosen Package", "Term of Payment"
  *
  * @param {Number} rowNumber - The row number (1-indexed) in the sheet.
  */
@@ -82,10 +82,10 @@ function generateCardForRow(rowNumber) {
   var idNumber = getCellValue("ID Number");
   var college = getCellValue("College");
   
-  // Use "Alternate Degree Code" if "Degree Code" equals "MY DEGREE CODE ISN'T IN THE LIST".
+  // Use "Alt. Deg. Code" if "Degree Code" equals "MY DEGREE CODE ISN'T IN THE LIST".
   var degree = getCellValue("Degree Code");
-  if (degree === "MY DEGREE CODE ISN'T IN THE LIST" && headerMapping["Alternate Degree Code"] !== undefined) {
-    degree = getCellValue("Alternate Degree Code");
+  if (degree === "MY DEGREE CODE ISN'T IN THE LIST" && headerMapping["Alt. Deg. Code"] !== undefined) {
+    degree = getCellValue("Alt. Deg. Code");
   }
   
   var chosenPackage = getCellValue("Chosen Package");
@@ -251,10 +251,10 @@ function onOpen() {
     var idNumber = getCell("ID Number");
     var college = getCell("College");
     
-    // Use Alternate Degree Code if "Degree Code" is "MY DEGREE CODE ISN'T IN THE LIST".
+    // Use Alt. Deg. Code if "Degree Code" is "MY DEGREE CODE ISN'T IN THE LIST".
     var degree = getCell("Degree Code");
-    if (degree === "MY DEGREE CODE ISN'T IN THE LIST" && headerMapping["Alternate Degree Code"] !== undefined) {
-      degree = getCell("Alternate Degree Code");
+    if (degree === "MY DEGREE CODE ISN'T IN THE LIST" && headerMapping["Alt. Deg. Code"] !== undefined) {
+      degree = getCell("Alt. Deg. Code");
     }
     
     var chosenPackage = getCell("Chosen Package");
