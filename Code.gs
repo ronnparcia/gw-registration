@@ -49,7 +49,7 @@ function addTicketNumber() {
  *
  * Expected header names:
  *   "Account Number", "OR Number", "Last Name", "First Name",
- *   "Middle Name", "Full ID Number", "College", "Degree Code",
+ *   "Middle Name", "ID Number", "College", "Degree Code",
  *   "Alternate Degree Code", "Chosen Package", "Term of Payment"
  *
  * @param {Number} rowNumber - The row number (1-indexed) in the sheet.
@@ -79,7 +79,7 @@ function generateCardForRow(rowNumber) {
   var lastName = getCellValue("Last Name");
   var firstName = getCellValue("First Name");
   var middleName = getCellValue("Middle Name"); // New field.
-  var idNumber = getCellValue("Full ID Number");
+  var idNumber = getCellValue("ID Number");
   var college = getCellValue("College");
   
   // Use "Alternate Degree Code" if "Degree Code" equals "MY DEGREE CODE ISN'T IN THE LIST".
@@ -221,7 +221,7 @@ function onOpen() {
    * regenerateCardForRow() creates a new card for the specified row.
    * It uses the row’s data to build the file name and performs placeholder replacements.
    * The new file name format is:
-   *   "[Account Number] - [Full ID Number] - [Last Name] - Edited (yyyy-MM-dd HH:mm:ss)"
+   *   "[Account Number] - [ID Number] - [Last Name] - Edited (yyyy-MM-dd HH:mm:ss)"
    */
   function regenerateCardForRow(rowNumber) {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
@@ -248,7 +248,7 @@ function onOpen() {
     var lastName = getCell("Last Name");
     var firstName = getCell("First Name");
     var middleName = getCell("Middle Name");
-    var idNumber = getCell("Full ID Number");
+    var idNumber = getCell("ID Number");
     var college = getCell("College");
     
     // Use Alternate Degree Code if "Degree Code" is "MY DEGREE CODE ISN'T IN THE LIST".
@@ -279,7 +279,7 @@ function onOpen() {
     var folderId = "1ictsEDej7qYc2sI4_udzKp6SPxi3qoYR";
     
     // Build the new file name with the "Edited" suffix.
-    // Format: "[Account Number] - [Full ID Number] - [Last Name] - Edited (yyyy-MM-dd HH:mm:ss)"
+    // Format: "[Account Number] - [ID Number] - [Last Name] - Edited (yyyy-MM-dd HH:mm:ss)"
     var timestamp = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "yyyy-MM-dd HH:mm:ss");
     var copyName = accountNumber + " - " + idNumber + " - " + lastName + " - Edited (" + timestamp + ")";
     
